@@ -74,10 +74,6 @@ const styles = StyleSheet.create({
   list:{
     paddingHorizontal:40,
   },
-  button:{
-    
-    
-  }
 
   
  
