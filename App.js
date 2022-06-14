@@ -15,8 +15,11 @@ export default function App() {
   const [todo, setTodo] = useState('');
 
   const addTodo = () => {
-    setTodos([...todos,{ text: todo, key: Math.random().toString() }]);
-    setTodo('')
+    if (todo !== '') {
+      setTodos([...todos,{ text: todo, key: Math.random().toString() }]);
+      setTodo('')
+    }
+
   }
   const deleteTodo = (id) => {
      setTodos((prev)=>{
@@ -33,7 +36,7 @@ export default function App() {
         {/* todo form */}
         <View style={styles.form}>
           <TextInput style={styles.input} placeholder="What needs to be done?" value={todo} onChangeText={(text)=>setTodo(text)} />
-          <Button style={styles.button} title="Add" onPress={()=>addTodo()}  />
+          <Button style={styles.button} color='coral' title="Add" onPress={()=>addTodo()}  />
         </View>
         <View style={styles.list}>
           <FlatList keyExtractor={(item)=>item.key} data={todos} renderItem={({item})=>{return <TodoItem todo={item} deleteTodo={deleteTodo} />}} />
@@ -57,13 +60,11 @@ const styles = StyleSheet.create({
   },
   form:{
     width: '100%',
-    flexDirection: 'row',
-    justifyContent:'center'
-    
+    padding:20,
   },
   input:{
     height: 40,
-    width: '70%',
+    marginBottom:10,
     borderWidth: 1,
     borderColor: '#2196f3',
     paddingLeft: 10,
@@ -72,6 +73,10 @@ const styles = StyleSheet.create({
   },
   list:{
     paddingHorizontal:40,
+  },
+  button:{
+    
+    
   }
 
   
