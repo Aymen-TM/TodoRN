@@ -70,6 +70,9 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: 'bold',
   },
+  list:{
+    paddingHorizontal:40,
+  }
 
   
  
