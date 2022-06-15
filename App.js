@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import { useState } from 'react';
-import { Button, FlatList,StyleSheet, Text, TextInput, View,TouchableOpacity } from 'react-native';
+import { Button, FlatList,StyleSheet, Text, TextInput, View,Alert } from 'react-native';
 import Header from './components/Header';
 import TodoItem from './components/TodoItem';
 
@@ -15,7 +15,9 @@ export default function App() {
   const [todo, setTodo] = useState('');
 
   const addTodo = () => {
-    if (todo !== '') {
+    if (todo == '') {
+      Alert.alert('OOPS', 'Todo must not be empty', [{ text: 'Undertstood'}]);
+    }else{
       setTodos([...todos,{ text: todo, key: Math.random().toString() }]);
       setTodo('')
     }
